@@ -5,7 +5,7 @@
   "description": "Canonical engineering repository for the Llama (LLAMA) Solana meme-token project.",
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "scripts": {
     "build": "node scripts/build-check.mjs && tsc -p tsconfig.json",
