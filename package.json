@@ -1,6 +1,6 @@
 {
   "name": "llama-meme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Canonical engineering repository for the Llama (LLAMA) Solana meme-token project.",
   "type": "module",
@@ -8,12 +8,19 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "node scripts/build-check.mjs",
-    "lint": "node --check scripts/*.mjs && node --check tests/*.mjs",
-    "validate": "node scripts/validate-token-spec.mjs && node scripts/verify-assets-manifest.mjs",
-    "test": "node --test tests/*.test.mjs",
-    "coverage": "node --test --experimental-test-coverage tests/*.test.mjs",
+    "build": "node scripts/build-check.mjs && tsc -p tsconfig.json",
+    "lint": "node --check scripts/*.mjs && node --check tests/*.mjs && tsc -p tsconfig.json --noEmit",
+    "validate": "node scripts/validate-token-spec.mjs && node scripts/verify-assets-manifest.mjs && node scripts/verify-solana-dependencies.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "coverage": "npm run build && node --test --experimental-test-coverage tests/*.test.mjs",
     "security": "node scripts/security-check.mjs",
-    "ci": "npm run build && npm run lint && npm run validate && npm test && npm run security"
+    "ci": "npm run lint && npm run validate && npm test && npm run security"
+  },
+  "dependencies": {
+    "@solana-program/token": "0.15.0",
+    "@solana/kit": "7.0.0"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2"
   }
 }
