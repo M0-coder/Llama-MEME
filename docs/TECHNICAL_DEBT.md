@@ -10,7 +10,7 @@ Direct dependencies are pinned exactly, but a repository `package-lock.json` has
 
 Required closure evidence:
 
-- committed lockfile generated from a clean Node 22 environment;
+- committed lockfile generated from a clean Node 24 environment;
 - `npm ci` replacing `npm install` in CI;
 - clean install + build + test evidence from that lockfile.
 

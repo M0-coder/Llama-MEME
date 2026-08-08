@@ -10,7 +10,7 @@
   "scripts": {
     "build": "node scripts/build-check.mjs && tsc -p tsconfig.json",
     "lint": "node --check scripts/*.mjs && node --check tests/*.mjs && tsc -p tsconfig.json --noEmit",
-    "validate": "node scripts/validate-token-spec.mjs && node scripts/verify-assets-manifest.mjs && node scripts/verify-solana-dependencies.mjs",
+    "validate": "node scripts/validate-token-spec.mjs && node scripts/verify-assets-manifest.mjs && node scripts/verify-solana-dependencies.mjs && node scripts/validate-devnet-execution-gate.mjs",
     "test": "npm run build && node --test tests/*.test.mjs",
     "coverage": "npm run build && node --test --experimental-test-coverage tests/*.test.mjs",
     "security": "node scripts/security-check.mjs",

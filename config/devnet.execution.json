@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "phase": "PHASE-03",
+  "cluster": "devnet",
+  "rpcUrl": "https://api.devnet.solana.com",
+  "liveWriteAllowed": false,
+  "mainnetAllowed": false,
+  "signerPolicy": "external-wallet-only",
+  "canonicalToken": {
+    "name": "Llama",
+    "symbol": "LLAMA",
+    "totalSupplyTokens": "1000000000",
+    "decimals": 9
+  },
+  "requiredEvidence": [
+    "exactCodeSha",
+    "cluster",
+    "mintAddress",
+    "transactionSignature",
+    "postTransactionInspection"
+  ],
+  "executionSteps": {
+    "createMintAccount": "blocked-pending-explicit-authorization",
+    "mintSupply": "blocked-separate-gate",
+    "revokeMintAuthority": "blocked-separate-gate",
+    "revokeFreezeAuthority": "blocked-separate-gate",
+    "createLiquidity": "out-of-scope",
+    "mainnetDeployment": "forbidden"
+  }
+}
