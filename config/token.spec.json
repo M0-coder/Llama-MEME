@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "Llama",
+  "networkFamily": "solana",
+  "deploymentStage": "pre-devnet",
+  "token": {
+    "name": "Llama",
+    "symbol": "LLAMA",
+    "standard": "fungible-spl-token",
+    "targetProgram": "SPL Token Program",
+    "totalSupplyTokens": "1000000000",
+    "decimals": 9,
+    "totalSupplyBaseUnits": "1000000000000000000"
+  },
+  "allocation": {
+    "publicLaunch": {
+      "basisPoints": 8500,
+      "tokens": "850000000"
+    },
+    "community": {
+      "basisPoints": 1000,
+      "tokens": "100000000"
+    },
+    "treasury": {
+      "basisPoints": 500,
+      "tokens": "50000000"
+    },
+    "team": {
+      "basisPoints": 0,
+      "tokens": "0"
+    },
+    "privateSale": {
+      "basisPoints": 0,
+      "tokens": "0"
+    }
+  },
+  "authorities": {
+    "mint": {
+      "finalState": "revoked"
+    },
+    "freeze": {
+      "finalState": "revoked"
+    }
+  },
+  "controls": {
+    "mainnetDeploymentAllowed": false,
+    "privateKeyHandling": "external-wallet-only",
+    "hiddenAdministrativeWalletsAllowed": false
+  }
+}
