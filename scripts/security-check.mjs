@@ -2,7 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { extname, join } from 'node:path';
 
 const root = new URL('..', import.meta.url);
-const allowedExtensions = new Set(['.md', '.json', '.mjs', '.yml', '.yaml', '.txt', '']);
+const allowedExtensions = new Set(['.md', '.json', '.mjs', '.ts', '.yml', '.yaml', '.txt', '']);
 const suspicious = [
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
   /\b(?:seed phrase|mnemonic)\s*[:=]\s*["'][^"']+/i,
@@ -11,7 +11,7 @@ const suspicious = [
 
 async function walk(url, relative = '') {
   for (const entry of await readdir(url, { withFileTypes: true })) {
-    if (['.git', 'node_modules'].includes(entry.name)) continue;
+    if (['.git', 'node_modules', 'dist', 'coverage'].includes(entry.name)) continue;
     const rel = join(relative, entry.name);
     const child = new URL(`${entry.name}${entry.isDirectory() ? '/' : ''}`, url);
     if (entry.isDirectory()) {
