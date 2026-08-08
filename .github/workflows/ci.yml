@@ -1,0 +1,45 @@
+name: Foundation CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foundation-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build contract
+        run: npm run build
+
+      - name: Static syntax analysis
+        run: npm run lint
+
+      - name: Validate canonical specifications
+        run: npm run validate
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Coverage evidence
+        run: npm run coverage
+
+      - name: Secret-pattern security check
+        run: npm run security

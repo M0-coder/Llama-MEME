@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "assets": [
+    {
+      "path": "assets/llama-token-icon.png",
+      "role": "token-icon",
+      "source": "user-approved-artwork",
+      "width": 1024,
+      "height": 1024,
+      "format": "png-rgba",
+      "sha256": "12f82d4089ecb298f843c7f525a95fcdec8282eafb4be3547d6fe6b934c90438",
+      "status": "pending-binary-ingest"
+    },
+    {
+      "path": "assets/llama-character.png",
+      "role": "full-character",
+      "source": "user-approved-artwork",
+      "width": 1024,
+      "height": 1024,
+      "format": "png-rgba",
+      "sha256": "29e8ba8e4b9b46aaba3f90dd851b61869d7320f66dae05371da5e193f2641a97",
+      "status": "pending-binary-ingest"
+    }
+  ]
+}
