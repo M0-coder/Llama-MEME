@@ -1,4 +1,4 @@
-name: Foundation CI
+name: Llama CI
 
 on:
   pull_request:
@@ -10,13 +10,13 @@ permissions:
   contents: read
 
 concurrency:
-  group: foundation-ci-${{ github.ref }}
+  group: llama-ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,18 +24,18 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
 
-      - name: Build contract
-        run: npm run build
+      - name: Install exact direct dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
 
-      - name: Static syntax analysis
+      - name: Static analysis and TypeScript compilation
         run: npm run lint
 
-      - name: Validate canonical specifications
+      - name: Validate canonical specifications and dependency pins
         run: npm run validate
 
-      - name: Unit tests
+      - name: Unit and integration tests
         run: npm test
 
       - name: Coverage evidence
@@ -43,3 +43,6 @@ jobs:
 
       - name: Secret-pattern security check
         run: npm run security
+
+      - name: Dependency tree evidence
+        run: npm ls --all
